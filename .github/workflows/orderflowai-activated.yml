@@ -1,0 +1,15 @@
+name: Keep OrderFlowAI Streamlit App Awake
+
+on:
+  schedule:
+    - cron: '0 */8 * * *' # Runs every 8 hours (under the 12-hour limit)
+  workflow_dispatch:       # Allows you to run it manually to test
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: gpenessot/streamlit-keep-alive@v1
+        with:
+          app-urls: |
+            https://orderflowai.streamlit.app/Login
